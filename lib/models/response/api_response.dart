@@ -27,4 +27,3 @@ class ApiResponse<T> {
 
 enum Status { COMPLETED, ERROR }
 
-bool checkError(ApiResponse r) => (r.status == Status.ERROR) ? true : false;

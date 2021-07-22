@@ -1,15 +1,21 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:mcn_app/api/api_service.dart';
+import 'package:mcn_app/constants/constants.dart';
 import 'package:mcn_app/di/module.dart';
-import 'package:mcn_app/models/api_response.dart';
+import 'package:mcn_app/models/response/api_response.dart';
 import 'package:mcn_app/utils/utility.dart';
 
 class BaseRepository {
-  final ApiService _apiService = getIt<ApiService>();
+  final ApiService _apiService = g<ApiService>();
 
   BaseRepository();
+
+  bool checkError(ApiResponse r) => (r.status == Status.ERROR) ? true : false;
+  var box = Hive.box(HiveConstant.box);
 
   Future<ApiResponse> getApi(String url) async {
     bool isInternetAvailable = await Utility.checkInternetConnection();
@@ -43,6 +49,7 @@ class BaseRepository {
         return ApiResponse.error(jsonDecode(response)['message']);
       }
     } catch (e) {
+      print(e);
       return ApiResponse.error(e.toString());
     }
   }

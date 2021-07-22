@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mcn_app/utils/color.dart';
+import 'package:mcn_app/constants/color.dart';
 
 class UiHelper {
   static showSnackBar(context, String message, {bool isError = false}) {

@@ -2,15 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:mcn_app/constants/constants.dart';
 import 'package:mcn_app/di/module.dart';
 import 'package:mcn_app/exceptions/custom_exceptions.dart';
 import 'package:mcn_app/utils/error_helper.dart';
 
-@lazySingleton
 class ApiService {
-  final Dio _dio = getIt<Dio>();
+  final Dio _dio = g<Dio>();
 
   Future<dynamic> get(String url) async {
     var responseJson;
@@ -37,6 +35,8 @@ class ApiService {
       throw FetchDataException('No Internet connection');
     } on DioError catch (e) {
       throw FetchDataException(ErrorHelper.extractApiError(e));
+    } catch(e){
+      print(e);
     }
     return responseJson;
   }
