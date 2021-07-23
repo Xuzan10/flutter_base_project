@@ -2,8 +2,8 @@
 
 Flutter base project having:
 
-flutter_bloc
-Hive
-Getit
-repository pattern
-utilities
+* flutter_bloc
+* Hive
+* Getit
+* repository pattern
+* utilities
