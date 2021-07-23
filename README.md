@@ -7,3 +7,6 @@ Flutter base project having:
 * Getit
 * repository pattern
 * utilities
+
+
+See login_hive branch for login implementation
